@@ -1,24 +1,28 @@
+# 🎯 Coach Re-ID Tracker (YOLOv8 + ResNet50)
 
-FULL TRAIN (Binary ReID: coach vs other)
+Цей проєкт реалізує систему комп'ютерного зору реального часу для розпізнавання та відстеження конкретної людини ("Тренера") у відеопотоці (RTSP). 
 
-Структура очікуваних даних:
-C:\coach_data\dataset_reid\
-  train\
-    coach\        # кропи тренера (200–800+)
-    other\        # кропи інших (2–5x від coach)
-  val\
-    coach\
-    other\
+Система поєднує детекцію людей за допомогою **YOLOv8** та бінарну систему реідентифікації (Re-ID) на базі **ResNet50**, щоб впевнено відрізняти цільову персону від інших людей у кадрі.
 
-Кроки:
-1) Підготуй дані (або запусти prepare_split.py, якщо вихідні кропи у C:\coach_data\seeds\coach1 і C:\coach_data\seeds\other):
-   python prepare_split.py
+## ✨ Основні можливості
+* **Детекція в реальному часі:** Використання YOLOv8n для швидкого пошуку людей у кадрі.
+* **Кастомний Re-ID модуль:** Натренована модель ResNet50 генерує 512-вимірні ембединги для класифікації (Coach vs Other).
+* **Система голосування (Voting Window):** Згладжування помилок розпізнавання на відео завдяки аналізу історії останніх 15 кадрів (cosine similarity).
+* **Логування сесій:** Автоматичний запис часу початку та кінця тренувань (коли тренер з'являється/зникає з кадру) у файл `sessions.txt`.
 
-2) Тренуй модель:
-   python train_binary_reid.py --data_root "C:\coach_data\dataset_reid" --out "C:\coach_data\reid_runs\coach_binary" --epochs 60 --batch 64 --lr 3e-4
+## 📂 Структура проєкту
 
-3) Експортуй ембеддер (обріже класифікатор, залишить фічі + нормалізацію):
-   python export_embedder.py --ckpt "C:\coach_data\reid_runs\coach_binary\model_best.pt" --out "C:\coach_data\reid_runs\coach_binary\embedder.pt"
+* `prepare_split.py` — підготовка даних (розподіл сирих фото на `train` та `val`).
+* `train_binary_reid.py` — тренування моделі ResNet50 для розрізнення тренера та інших людей.
+* `export_embedder.py` — експорт "чистої" моделі (`Backbone` без класифікаційної голови) для використання в реальному часі.
+* `make_gallery.py` — створення еталонної бази (галереї `.npy`) з фотографій тренера.
+* `recognizer_init.py` — ініціалізація системи розпізнавання (завантаження ваг та галереї).
+* `runtime_integration.py` — логіка інференсу: генерація ембедингів, порівняння через косинусну відстань та система голосування для треків.
+* `rtsp_coach_test.py` — головний скрипт для запуску RTSP-потоку, детекції та відстеження.
 
-4) Інтегруй у пайплайн YOLO+ByteTrack:
-   див. runtime_integration.py (паспортні функції для is_coach_crop, голосування, пороги).
+## ⚙️ Встановлення
+
+1. Клонуйте репозиторій:
+   ```bash
+   git clone [https://github.com/Archeck911/Home-work-for-Computer-Vision.git](https://github.com/Archeck911/Home-work-for-Computer-Vision.git)
+   cd Home-work-for-Computer-Vision
