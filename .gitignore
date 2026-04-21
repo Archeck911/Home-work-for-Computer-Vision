@@ -1,0 +1,17 @@
+# Кеш Python
+pycache/
+
+# Ваги моделей (PyTorch, YOLO)
+*.pt
+
+# Масиви даних та галереї
+*.npy
+
+# Лог-файли
+sessions.txt
+
+# Папки з датасетами та результатами (щоб не вантажити тисячі фото)
+dataset_reid/
+gallery_coach/
+seeds/
+reid_runs/
