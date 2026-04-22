@@ -24,7 +24,7 @@
 
 1. Клонуйте репозиторій:
    ```bash
-   git clone [https://github.com/Archeck911/Home-work-for-Computer-Vision.git](https://github.com/Archeck911/Home-work-for-Computer-Vision.git)
+   git clone https://github.com/Archeck911/Home-work-for-Computer-Vision.git
    cd Home-work-for-Computer-Vision
 
 Повний цикл (якщо робиш все з нуля):
