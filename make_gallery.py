@@ -8,9 +8,10 @@ from torchvision import transforms
 from train_binary_reid import Backbone
 
 
-EMBEDDER_CKPT = r"coach_data/reid_runs/coach_binary/embedder.pt"
-IMAGES_DIR = r"coach_data/gallery_coach"
-OUT_NPY = r"coach_data/reid_runs/coach_binary/gallery_coach.npy"
+# Просто вказуємо шлях від папки, яка лежить поруч зі скриптом
+SEED_COACH = r"coach_data/seeds/coach1"
+SEED_OTHER = r"caoch_data/seeds/other"
+OUT_ROOT = r"coach_data/dataset_reid"
 
 def _load_embedder_state(device):
     sd = torch.load(EMBEDDER_CKPT, map_location=device)
