@@ -7,9 +7,10 @@ from PIL import Image
 from torchvision import transforms
 from train_binary_reid import Backbone
 
-EMBEDDER_CKPT = r"C:\coach_data\reid_runs\coach_binary\embedder.pt"
-IMAGES_DIR    = r"C:\coach_data\gallery_coach"
-OUT_NPY       = r"C:\coach_data\reid_runs\coach_binary\gallery_coach.npy"
+
+EMBEDDER_CKPT = r"coach_data/reid_runs/coach_binary/embedder.pt"
+IMAGES_DIR = r"coach_data/gallery_coach"
+OUT_NPY = r"coach_data/reid_runs/coach_binary/gallery_coach.npy"
 
 def _load_embedder_state(device):
     sd = torch.load(EMBEDDER_CKPT, map_location=device)
