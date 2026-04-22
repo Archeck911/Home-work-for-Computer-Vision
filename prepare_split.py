@@ -2,10 +2,10 @@
 import os, shutil, random
 from pathlib import Path
 
-# Вихідні: C:\coach_data\seeds\coach1, C:\coach_data\seeds\other
-SEED_COACH = r"C:\coach_data\seeds\coach1"
-SEED_OTHER = r"C:\coach_data\seeds\other"
-OUT_ROOT   = r"C:\coach_data\dataset_reid"
+
+SEED_COACH = r"coach_data/seeds/coach1"
+SEED_OTHER = r"caoch_data/seeds/other"
+OUT_ROOT = r"coach_data/dataset_reid"
 TRAIN_PCT  = 0.8
 
 def list_images(root):
