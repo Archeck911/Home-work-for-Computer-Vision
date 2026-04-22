@@ -34,7 +34,6 @@ def get_embedder(device=None):
     return model, tf, device
 
 @torch.inference_mode()
-@torch.inference_mode()
 def embed_img(model, tf, device, bgr):
     # BGR -> RGB
     rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
