@@ -2,8 +2,8 @@
 import numpy as np
 from runtime_integration import RuntimeEmbedder, CoachRecognizer
 
-EMBEDDER = r"C:\coach_data\reid_runs\coach_binary\embedder.pt"
-GALLERY  = r"C:\coach_data\reid_runs\coach_binary\gallery_coach.npy"
+EMBEDDER = r"coach_data\reid_runs\coach_binary\embedder.pt"
+GALLERY  = r"coach_data\reid_runs\coach_binary\gallery_coach.npy"
 
 def build_recognizer(device=None):
     emb = RuntimeEmbedder(EMBEDDER, device=device, img_h=256, img_w=128)
