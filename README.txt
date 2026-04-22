@@ -51,6 +51,6 @@ python rtsp_coach_test.py
 ## 📦 Дані та натреновані моделі
 
 Повний набір даних (сирі фото, підготовлений датасет, еталонна галерея) та натреновані ваги моделей (чекпоінти) можна завантажити одним архівом (222 МБ):
-👉 [Завантажити з Google Drive](https://drive.google.com/file/d/1GSzt83gyv0tO9fBkuoT7fM_U51TidGeE/view?usp=drive_link)
+👉 [Завантажити з Google Driveв папку з скриптом Home-work-for-Computer-Vision](https://drive.google.com/file/d/1GSzt83gyv0tO9fBkuoT7fM_U51TidGeE/view?usp=drive_link)
 
 Після завантаження розпакуйте архів у головну папку проєкту.
